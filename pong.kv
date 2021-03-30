@@ -1,0 +1,71 @@
+<MyLayout>
+    do_default_tab: False
+    size_hint: 1, 1
+    tab_pos: 'top_left'
+
+    TabbedPanelItem:
+        text: "Memória"
+
+        BoxLayout:
+            padding: '10dp'
+
+        MDProgressBar:
+            orientation: 'horizontal'
+            value: 50
+
+
+
+    TabbedPanelItem:
+        text: "CPU"
+        BoxLayout:
+            Label:
+                text: 'CPU => '
+            MDFillRoundFlatButton:
+                text: 'Click me'
+
+    TabbedPanelItem:
+        text: "Disco"
+
+        Image:
+            source: "aspen.jpg"
+
+    TabbedPanelItem:
+        text: "Arquivos"
+        BoxLayout:
+            padding: "10dp"
+
+            MDTextField:
+                id: text_field_arquivo
+                hint_text: "Escreva aqui um Diretório"
+                pos_hint: {"center_x": .1, "center_y": .95}
+                color_mode: 'accent'
+                mode: "fill"
+                helper_text: 'Insira um diretório válido'
+                helper_text_mode: "on_focus"
+                icon_right: "file"
+            MDFillRoundFlatButton:
+                text: 'Procurar'
+                on_press: root.pegarArq()
+
+            ScrollView:
+                MDList:
+                    id: panelArq
+
+
+    TabbedPanelItem:
+        text: "Server /Client"
+        BoxLayout:
+            padding: "10dp"
+
+            MDTextField:
+                id: text_field_error
+                hint_text: "Helper text on error (press 'Enter')"
+                helper_text: "There will always be a mistake"
+                helper_text_mode: "on_error"
+                pos_hint: {"center_x": .1, "center_y": .95}
+
+
+
+
+
+
