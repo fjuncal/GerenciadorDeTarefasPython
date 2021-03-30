@@ -2,6 +2,7 @@ import os
 
 import kivy
 from kivy.app import App
+import psutil
 from kivy.lang import Builder
 from kivy.uix.tabbedpanel import TabbedPanel
 from kivymd.app import MDApp
@@ -34,6 +35,8 @@ class MyLayout(TabbedPanel):
 class AwesomeApp(MDApp):
     def build(self):
         return MyLayout()
+    def on_start(self):
+        pass
 
     # def on_start(self):
     #     for i in testandoLista:

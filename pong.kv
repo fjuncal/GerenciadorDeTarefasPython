@@ -5,14 +5,52 @@
 
     TabbedPanelItem:
         text: "Memória"
+        FloatLayout:
+            orientation: "vertical"
 
-        BoxLayout:
-            padding: '10dp'
+            MDLabel:
+                pos_hint: {'center_x': .5, 'center_y': .97}
+                text: "Memória"
+                halign: "center"
+                font_size: 30
+                bold: True
+                color:  0, 0, 200, 2
 
-        MDProgressBar:
-            orientation: 'horizontal'
-            value: 50
+            MDLabel:
+                text: "Quantidade total: "
+                pos_hint: {'center_x': .5, 'center_y': .90}
+                color:  0, 0, 200, 2
+                bold: True
+            MDLabel:
+                text: "15GB"
+                pos_hint: {'center_x': .66, 'center_y': .90}
+                color:  0, 140, 255, 1
 
+            MDLabel:
+                text: "Quantidade sendo usada: "
+                pos_hint: {'center_x': .5, 'center_y': .80}
+                color:  0, 0, 200, 2
+                bold: True
+            MDLabel:
+                text: "7GB"
+                pos_hint: {'center_x': .74, 'center_y': .80}
+                color:  0, 140, 255, 1
+            MDLabel:
+                text: "60%"
+                pos_hint: {'center_x': .53, 'center_y': .3}
+                color:  0, 140, 255, 1
+                halign: "center"
+            MDLabel:
+                text: "Porcentagem utilizada: "
+                pos_hint: {'center_x': .4, 'center_y': .3}
+                color:  0, 0, 200, 2
+                bold: True
+                halign: "center"
+
+            MDProgressBar:
+                pos_hint: {"center_x": .5, "center_y": .2}
+                orientation: 'horizontal'
+                value: 50
 
 
     TabbedPanelItem:
@@ -57,12 +95,6 @@
         BoxLayout:
             padding: "10dp"
 
-            MDTextField:
-                id: text_field_error
-                hint_text: "Helper text on error (press 'Enter')"
-                helper_text: "There will always be a mistake"
-                helper_text_mode: "on_error"
-                pos_hint: {"center_x": .1, "center_y": .95}
 
 
 
