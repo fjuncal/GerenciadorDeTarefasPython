@@ -41,6 +41,7 @@ class MyLayout(TabbedPanel):
 
 
     def pegarArq(self):
+        self.ids.panelArq.clear_widgets()
         diretorio = self.ids.text_field_arquivo.text
         nomeUsuario = os.getlogin()
         diretorio_vdd = f'C:\\Users\\{nomeUsuario}\\{diretorio}'
