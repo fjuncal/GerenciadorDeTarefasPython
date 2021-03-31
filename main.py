@@ -12,6 +12,25 @@ Builder.load_file('pong.kv')
 
 
 class MyLayout(TabbedPanel):
+    def calculaMemoria(self):
+        self.ids.label_qtdTotal.text = ''
+        self.ids.label_qtdSendoUsada.text = ''
+        self.ids.label_porcentagemUsada.text = ''
+        self.ids.progressBar_porcentagem.value = 0
+
+        memoriaTotal = psutil.virtual_memory().total
+        convertendoTotal = memoriaTotal / (1024.0 ** 3)
+        self.ids.label_qtdTotal.text = f'{round(convertendoTotal, 2)} GB'
+
+        memoriaSendoUsada = psutil.virtual_memory().used
+        convertendoUsada = memoriaSendoUsada / (1024.0 ** 3)
+        self.ids.label_qtdSendoUsada.text = f'{round(convertendoUsada, 2)} GB'
+
+        porcentagemUsada = psutil.virtual_memory().percent
+        convertendoPorcentagem = round(porcentagemUsada, 2)
+        self.ids.label_porcentagemUsada.text = f'{convertendoPorcentagem} %'
+        self.ids.progressBar_porcentagem.value = convertendoPorcentagem
+
 
     def pegarArq(self):
         diretorio = self.ids.text_field_arquivo.text
@@ -35,8 +54,21 @@ class MyLayout(TabbedPanel):
 class AwesomeApp(MDApp):
     def build(self):
         return MyLayout()
+
     def on_start(self):
-        pass
+        memoriaTotal = psutil.virtual_memory().total
+        convertendoTotal = memoriaTotal / (1024.0 ** 3)
+        self.root.ids.label_qtdTotal.text = f'{round(convertendoTotal, 2)} GB'
+
+        memoriaSendoUsada = psutil.virtual_memory().used
+        convertendoUsada = memoriaSendoUsada / (1024.0 ** 3)
+        self.root.ids.label_qtdSendoUsada.text = f'{round(convertendoUsada, 2)} GB'
+
+        porcentagemUsada = psutil.virtual_memory().percent
+        convertendoPorcentagem = round(porcentagemUsada, 2)
+        self.root.ids.label_porcentagemUsada.text = f'{convertendoPorcentagem} %'
+        self.root.ids.progressBar_porcentagem.value = convertendoPorcentagem
+
 
     # def on_start(self):
     #     for i in testandoLista:
