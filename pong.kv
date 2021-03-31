@@ -240,14 +240,24 @@
                 font_size: 30
                 bold: True
                 color:  0, 0, 200, 2
+            MDTextField:
+                hint_text: "Escreva aqui uma Requisição"
+                pos_hint: {"center_x": .5, "center_y": .6}
+                color_mode: 'custom'
+                mode: "rectangle"
+                width: "30dp"
+                helper_text: 'Insira um diretório válido'
+                icon_right: "email"
 
             MDFillRoundFlatButton:
                 text: 'Ligar servidor'
                 pos_hint: {"center_x": .1, "center_y": .5}
+#                on_press: root.ligarServidor()
 
             MDFillRoundFlatButton:
                 text: 'Ligar Cliente'
                 pos_hint: {"center_x": .9, "center_y": .5}
+#                on_press: root.ligarCliente()
 
 
             MDLabel:
