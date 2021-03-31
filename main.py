@@ -1,37 +1,17 @@
 import os, cpuinfo
 
-import kivy
-from kivy.app import App
 import psutil
 from kivy.lang import Builder
 from kivy.uix.tabbedpanel import TabbedPanel
 from kivymd.app import MDApp
-from kivymd.uix.list import OneLineListItem, TwoLineListItem
+
+from kivymd.uix.list import TwoLineListItem
+
 
 Builder.load_file('pong.kv')
 
 
 class MyLayout(TabbedPanel):
-    def calculaDisco(self):
-        self.ids.label_quantidadeTotalDisco.text = ''
-        self.ids.label_qtdSendoUsadaDisco.text = ''
-        self.ids.label_qtdLivreDisco.text = ''
-        self.ids.label_porcentagemDisco.text = ''
-        self.ids.progressBar_discoPorcentagem.value = 0
-
-        disco = psutil.disk_usage('.')
-        discoTotal = disco.total / (1024.0 ** 3)
-        discoSendoUsado = disco.used / (1024.0 ** 3)
-        discoEspacoLivre = disco.free / (1024.0 ** 3)
-        discoPorcentagem = disco.percent
-
-        self.ids.label_quantidadeTotalDisco.text = f'{round(discoTotal, 2)} GB'
-        self.ids.label_qtdSendoUsadaDisco.text = f'{round(discoSendoUsado, 2)} GB'
-        self.ids.label_qtdLivreDisco.text = f'{round(discoEspacoLivre, 2)} GB'
-        self.ids.label_porcentagemDisco.text = f'{round(discoPorcentagem, 2)} %'
-        self.ids.progressBar_discoPorcentagem.value = discoPorcentagem
-
-
     def calculaCPU(self):
         self.ids.label_porcentagemCPU.text = ''
         self.ids.progressBar_cpuPorcentagem.value = 0
@@ -123,6 +103,14 @@ class AwesomeApp(MDApp):
         self.root.ids.label_qtdLivreDisco.text = f'{round(discoEspacoLivre, 2)} GB'
         self.root.ids.label_porcentagemDisco.text = f'{round(discoPorcentagem, 2)} %'
         self.root.ids.progressBar_discoPorcentagem.value = discoPorcentagem
+
+        for proc in psutil.process_iter():
+            info = proc.as_dict(attrs=['pid', 'name'])
+            self.root.ids.listaProcessos.add_widget(
+                TwoLineListItem(text=f'{info["name"]}', secondary_text=f'PID - {info["pid"]}',  on_press = lambda x: print(f'Processo: {x.text} | {x.secondary_text}'))
+            )
+
+
 
 if __name__== '__main__':
     AwesomeApp().run()

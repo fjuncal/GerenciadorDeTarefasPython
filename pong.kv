@@ -151,7 +151,7 @@
 
             MDLabel:
                 pos_hint: {'center_x': .5, 'center_y': .97}
-                text: "DISCO"
+                text: "Disco"
                 halign: "center"
                 font_size: 30
                 bold: True
@@ -203,11 +203,7 @@
                 pos_hint: {"center_x": .5, "center_y": .2}
                 orientation: 'horizontal'
                 value:
-            MDIconButton:
-                icon: "refresh"
-                theme_text_color: "Custom"
-                text_color: app.theme_cls.primary_color
-                on_press: root.calculaDisco()
+
 
     TabbedPanelItem:
         text: "Arquivos"
@@ -224,7 +220,7 @@
                 helper_text_mode: "on_focus"
                 icon_right: "file"
             MDFillRoundFlatButton:
-                text: 'Procurar'
+                text: 'Procurar arquivos'
                 on_press: root.pegarArq()
 
             ScrollView:
@@ -237,6 +233,24 @@
         BoxLayout:
             padding: "10dp"
 
+    TabbedPanelItem:
+        text: "Processos"
+
+        FloatLayout:
+            id: floatlayout
+            orientation: "vertical"
+
+            MDLabel:
+                pos_hint: {'center_x': .5, 'center_y': .97}
+                text: "Processos"
+                halign: "center"
+                font_size: 30
+                bold: True
+                color:  0, 0, 200, 2
+
+            ScrollView:
+                MDList:
+                    id: listaProcessos
 
 
 
