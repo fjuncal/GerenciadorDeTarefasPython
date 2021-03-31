@@ -38,16 +38,16 @@
                 pos_hint: {'center_x': .74, 'center_y': .80}
                 color:  0, 140, 255, 1
             MDLabel:
-                id: label_porcentagemUsada
-                text: ""
-                pos_hint: {'center_x': .54, 'center_y': .3}
-                color:  0, 140, 255, 1
-                halign: "center"
-            MDLabel:
                 text: "Porcentagem utilizada: "
                 pos_hint: {'center_x': .4, 'center_y': .3}
                 color:  0, 0, 200, 2
                 bold: True
+                halign: "center"
+            MDLabel:
+                id: label_porcentagemUsada
+                text: ""
+                pos_hint: {'center_x': .54, 'center_y': .3}
+                color:  0, 140, 255, 1
                 halign: "center"
 
             MDProgressBar:
@@ -64,11 +64,87 @@
 
     TabbedPanelItem:
         text: "CPU"
-        BoxLayout:
-            Label:
-                text: 'CPU => '
-            MDFillRoundFlatButton:
-                text: 'Click me'
+
+        FloatLayout:
+            orientation: "vertical"
+
+            MDLabel:
+                pos_hint: {'center_x': .5, 'center_y': .97}
+                text: "CPU"
+                halign: "center"
+                font_size: 30
+                bold: True
+                color:  0, 0, 200, 2
+
+            MDLabel:
+                text: "Processador: "
+                pos_hint: {'center_x': .5, 'center_y': .90}
+                color:  0, 0, 200, 2
+                bold: True
+            MDLabel:
+                id: label_nomeCPU
+                text: ""
+                pos_hint: {'center_x': .63, 'center_y': .90}
+                color:  0, 140, 255, 1
+            MDLabel:
+                text: "Arquitetura: "
+                pos_hint: {'center_x': .5, 'center_y': .80}
+                color:  0, 0, 200, 2
+                bold: True
+            MDLabel:
+                id: label_arquiteturaCPU
+                text: ""
+                pos_hint: {'center_x': .62, 'center_y': .80}
+                color:  0, 140, 255, 1
+
+            MDLabel:
+                text: "Bits: "
+                pos_hint: {'center_x': .5, 'center_y': .70}
+                color:  0, 0, 200, 2
+                bold: True
+            MDLabel:
+                id: label_bitsCPU
+                text: ""
+                pos_hint: {'center_x': .55, 'center_y': .70}
+                color:  0, 140, 255, 1
+            MDLabel:
+                text: "Núcleos: "
+                pos_hint: {'center_x': .5, 'center_y': .60}
+                color:  0, 0, 200, 2
+                bold: True
+            MDLabel:
+                id: label_nucleosCPU
+                text: ""
+                pos_hint: {'center_x': .59, 'center_y': .60}
+                color:  0, 140, 255, 1
+
+            MDLabel:
+                text: "Porcentagem utilizada: "
+                pos_hint: {'center_x': .4, 'center_y': .3}
+                color:  0, 0, 200, 2
+                bold: True
+                halign: "center"
+            MDLabel:
+                id: label_porcentagemCPU
+                text: ""
+                pos_hint: {'center_x': .54, 'center_y': .3}
+                color:  0, 140, 255, 1
+                halign: "center"
+            MDProgressBar:
+                id: progressBar_cpuPorcentagem
+                pos_hint: {"center_x": .5, "center_y": .2}
+                orientation: 'horizontal'
+                value:
+            MDIconButton:
+                icon: "refresh"
+                theme_text_color: "Custom"
+                text_color: app.theme_cls.primary_color
+                on_press: root.calculaCPU()
+
+
+
+
+
 
     TabbedPanelItem:
         text: "Disco"

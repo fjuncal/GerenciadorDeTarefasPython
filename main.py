@@ -1,4 +1,4 @@
-import os
+import os, cpuinfo
 
 import kivy
 from kivy.app import App
@@ -12,6 +12,14 @@ Builder.load_file('pong.kv')
 
 
 class MyLayout(TabbedPanel):
+    def calculaCPU(self):
+        self.ids.label_porcentagemCPU.text = ''
+        self.ids.progressBar_cpuPorcentagem.value = 0
+
+        cpuPorcentagem = psutil.cpu_percent(interval=0)
+        self.ids.label_porcentagemCPU.text = f'{cpuPorcentagem} %'
+        self.ids.progressBar_cpuPorcentagem.value = cpuPorcentagem
+
     def calculaMemoria(self):
         self.ids.label_qtdTotal.text = ''
         self.ids.label_qtdSendoUsada.text = ''
@@ -69,14 +77,19 @@ class AwesomeApp(MDApp):
         self.root.ids.label_porcentagemUsada.text = f'{convertendoPorcentagem} %'
         self.root.ids.progressBar_porcentagem.value = convertendoPorcentagem
 
+        info_cpu = cpuinfo.get_cpu_info()
+        cpuMarca = info_cpu['brand_raw']
+        cpuArquitetura = info_cpu['arch']
+        cpuBits = info_cpu['bits']
+        cpuNucleos = os.cpu_count()
+        cpuPorcentagem = psutil.cpu_percent(interval=0)
 
-    # def on_start(self):
-    #     for i in testandoLista:
-    #         self.root.ids.panelArq.add_widget(
-    #             OneLineListItem(text = f'{i}')
-    #         )
-
-
+        self.root.ids.label_nomeCPU.text = f'{cpuMarca}'
+        self.root.ids.label_arquiteturaCPU.text = f'{cpuArquitetura}'
+        self.root.ids.label_bitsCPU.text = f'{cpuBits} bits'
+        self.root.ids.label_nucleosCPU.text = f'{cpuNucleos} núcleos'
+        self.root.ids.label_porcentagemCPU.text = f'{cpuPorcentagem} %'
+        self.root.ids.progressBar_cpuPorcentagem.value = cpuPorcentagem
 
 if __name__== '__main__':
     AwesomeApp().run()
