@@ -233,6 +233,22 @@
 
         FloatLayout:
             padding: "10dp"
+            MDLabel:
+                pos_hint: {'center_x': .5, 'center_y': .97}
+                text: "Cliente / Servidor"
+                halign: "center"
+                font_size: 30
+                bold: True
+                color:  0, 0, 200, 2
+
+            MDFillRoundFlatButton:
+                text: 'Ligar servidor'
+                pos_hint: {"center_x": .1, "center_y": .5}
+
+            MDFillRoundFlatButton:
+                text: 'Ligar Cliente'
+                pos_hint: {"center_x": .9, "center_y": .5}
+
 
             MDLabel:
                 pos_hint: {'center_x': .4, 'center_y': .1}
