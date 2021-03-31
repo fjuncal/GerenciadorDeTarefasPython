@@ -230,8 +230,25 @@
 
     TabbedPanelItem:
         text: "Server /Client"
-        BoxLayout:
+
+        FloatLayout:
             padding: "10dp"
+
+            MDLabel:
+                pos_hint: {'center_x': .4, 'center_y': .1}
+                text: "IP:"
+                halign: "center"
+                font_size: 25
+                bold: True
+                color:  0, 0, 200, 2
+            MDLabel:
+                id: label_ip
+                text: ""
+                pos_hint: {'center_x': .50, 'center_y': .1}
+                color:  0, 140, 255, 1
+                halign: "center"
+                font_size: 17
+
 
     TabbedPanelItem:
         text: "Processos"

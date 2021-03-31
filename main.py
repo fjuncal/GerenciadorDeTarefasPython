@@ -4,6 +4,7 @@ import psutil
 from kivy.lang import Builder
 from kivy.uix.tabbedpanel import TabbedPanel
 from kivymd.app import MDApp
+import socket
 
 from kivymd.uix.list import TwoLineListItem
 
@@ -109,7 +110,9 @@ class AwesomeApp(MDApp):
             self.root.ids.listaProcessos.add_widget(
                 TwoLineListItem(text=f'{info["name"]}', secondary_text=f'PID - {info["pid"]}',  on_press = lambda x: print(f'Processo: {x.text} | {x.secondary_text}'))
             )
-
+        hostname = socket.gethostname()
+        IP = socket.gethostbyname(hostname)
+        self.root.ids.label_ip.text = f'{IP}'
 
 
 if __name__== '__main__':
