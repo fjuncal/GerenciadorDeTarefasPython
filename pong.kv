@@ -143,14 +143,71 @@
 
 
 
-
-
-
     TabbedPanelItem:
         text: "Disco"
 
-        Image:
-            source: "aspen.jpg"
+        FloatLayout:
+            orientation: "vertical"
+
+            MDLabel:
+                pos_hint: {'center_x': .5, 'center_y': .97}
+                text: "DISCO"
+                halign: "center"
+                font_size: 30
+                bold: True
+                color:  0, 0, 200, 2
+            MDLabel:
+                text: "Quantidade total: "
+                pos_hint: {'center_x': .5, 'center_y': .90}
+                color:  0, 0, 200, 2
+                bold: True
+            MDLabel:
+                id: label_quantidadeTotalDisco
+                text: ""
+                pos_hint: {'center_x': .66, 'center_y': .90}
+                color:  0, 140, 255, 1
+            MDLabel:
+                text: "Quantidade sendo usada: "
+                pos_hint: {'center_x': .5, 'center_y': .80}
+                color:  0, 0, 200, 2
+                bold: True
+            MDLabel:
+                id: label_qtdSendoUsadaDisco
+                text: ""
+                pos_hint: {'center_x': .74, 'center_y': .80}
+                color:  0, 140, 255, 1
+            MDLabel:
+                text: "Quantidade livre: "
+                pos_hint: {'center_x': .5, 'center_y': .70}
+                color:  0, 0, 200, 2
+                bold: True
+            MDLabel:
+                id: label_qtdLivreDisco
+                text: ""
+                pos_hint: {'center_x': .66, 'center_y': .70}
+                color:  0, 140, 255, 1
+            MDLabel:
+                text: "Porcentagem utilizada: "
+                pos_hint: {'center_x': .4, 'center_y': .3}
+                color:  0, 0, 200, 2
+                bold: True
+                halign: "center"
+            MDLabel:
+                id: label_porcentagemDisco
+                text: ""
+                pos_hint: {'center_x': .54, 'center_y': .3}
+                color:  0, 140, 255, 1
+                halign: "center"
+            MDProgressBar:
+                id: progressBar_discoPorcentagem
+                pos_hint: {"center_x": .5, "center_y": .2}
+                orientation: 'horizontal'
+                value:
+            MDIconButton:
+                icon: "refresh"
+                theme_text_color: "Custom"
+                text_color: app.theme_cls.primary_color
+                on_press: root.calculaDisco()
 
     TabbedPanelItem:
         text: "Arquivos"
