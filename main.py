@@ -52,7 +52,7 @@ class MyLayout(TabbedPanel):
                 if os.path.isfile(f_path):
                     f_size = os.path.getsize(f_path)  / (1024.0 ** 2)
                     self.ids.panelArq.add_widget(
-                        TwoLineListItem(text = f'{arquivo}', secondary_text = f'{round(f_size, 2)} MB')
+                        TwoLineListItem(text = f'{arquivo}', secondary_text = f'{round(f_size, 2)} MB', on_press = lambda x: print(f'Arquivo: {x.text} | Tamanho: {x.secondary_text}'))
                     )
 
         except FileNotFoundError as e:
@@ -116,18 +116,3 @@ if __name__== '__main__':
     AwesomeApp().run()
 
 
-def arq():
-    diretorio = input('informe um diretorio: ')
-    nomeUsuario = os.getlogin()
-    diretorio_vdd = f'C:\\Users\\{nomeUsuario}\\{diretorio}'
-    lista_arquivos =[]
-    try:
-        arquivos = os.listdir(diretorio_vdd)
-        for arquivo in arquivos:
-            f_path = os.path.join(diretorio_vdd, arquivo)
-            if os.path.isfile(f_path):
-                f_size = os.path.getsize(f_path)
-                lista_arquivos.append(arq)
-
-    except FileNotFoundError as e:
-        print(f'diretório não existe')
