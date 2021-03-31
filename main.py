@@ -41,9 +41,9 @@ class MyLayout(TabbedPanel):
             for arquivo in arquivos:
                 f_path = os.path.join(diretorio_vdd, arquivo)
                 if os.path.isfile(f_path):
-                    f_size = os.path.getsize(f_path)
+                    f_size = os.path.getsize(f_path)  / (1024.0 ** 2)
                     self.ids.panelArq.add_widget(
-                        TwoLineListItem(text = f'{arquivo}', secondary_text = f'{round(f_size, 2)}    Bytes')
+                        TwoLineListItem(text = f'{arquivo}', secondary_text = f'{round(f_size, 2)} MB')
                     )
 
         except FileNotFoundError as e:
